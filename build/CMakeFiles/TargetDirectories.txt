@@ -1,0 +1,4 @@
+/home/vboxuser/rgr/build/CMakeFiles/encryption_rgr.dir
+/home/vboxuser/rgr/build/CMakeFiles/xor_plugin.dir
+/home/vboxuser/rgr/build/CMakeFiles/edit_cache.dir
+/home/vboxuser/rgr/build/CMakeFiles/rebuild_cache.dir
