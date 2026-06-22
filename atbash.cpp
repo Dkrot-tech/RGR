@@ -1,29 +1,33 @@
 #include "atbash.h"
 
-char atbashChar(char c)
+wchar_t atbashChar(wchar_t c)
 {
-    if (c >= 'A' && c <= 'Z')
-        return 'Z' - (c - 'A');
+    if (c >= L'A' && c <= L'Z')
+        return L'Z' - (c - L'A');
 
-    if (c >= 'a' && c <= 'z')
-        return 'z' - (c - 'a');
+    if (c >= L'a' && c <= L'z')
+        return L'z' - (c - L'a');
+
+    if (c >= L'А' && c <= L'Я')
+        return L'Я' - (c - L'А');
+
+    if (c >= L'а' && c <= L'я')
+        return L'я' - (c - L'а');
 
     return c;
 }
 
-std::string encryptAtbash(const std::string& text)
+std::wstring encryptAtbash(const std::wstring& text)
 {
-    std::string result = text;
+    std::wstring result = text;
 
-    for (char& c : result)
-    {
+    for (wchar_t& c : result)
         c = atbashChar(c);
-    }
 
     return result;
 }
 
-std::string decryptAtbash(const std::string& text)
+std::wstring decryptAtbash(const std::wstring& text)
 {
     return encryptAtbash(text);
 }

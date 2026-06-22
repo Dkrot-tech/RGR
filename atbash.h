@@ -3,7 +3,7 @@
 
 #include <string>
 
-std::string encryptAtbash(const std::string& text);
-std::string decryptAtbash(const std::string& text);
+std::wstring encryptAtbash(const std::wstring& text);
+std::wstring decryptAtbash(const std::wstring& text);
 
 #endif

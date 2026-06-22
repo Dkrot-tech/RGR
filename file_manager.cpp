@@ -1,32 +1,39 @@
 #include "file_manager.h"
 
 #include <fstream>
-#include <sstream>
+#include <locale>
 #include <stdexcept>
 
-std::string readFile(const std::string& filename)
+std::wstring readFile(const std::string& filename)
 {
-    std::ifstream file(filename);
+    std::wifstream file(filename);
 
     if (!file.is_open())
+        throw std::runtime_error("Cannot open file");
+
+    file.imbue(std::locale(""));
+
+    std::wstring text;
+    std::wstring line;
+
+    while (std::getline(file, line))
     {
-        throw std::runtime_error("Error");
+        text += line;
+        text += L'\n';
     }
 
-    std::stringstream buffer;
-    buffer << file.rdbuf();
-
-    return buffer.str();
+    return text;
 }
 
-void writeFile(const std::string& filename, const std::string& content)
+void writeFile(const std::string& filename,
+               const std::wstring& content)
 {
-    std::ofstream file(filename);
+    std::wofstream file(filename);
 
     if (!file.is_open())
-    {
-        throw std::runtime_error("Error");
-    }
+        throw std::runtime_error("Cannot create file");
+
+    file.imbue(std::locale(""));
 
     file << content;
 }
